@@ -3,7 +3,7 @@
  Name        : 2048.c
  Author      : Maurits van der Schee
  Description : Console version of the game "2048" for GNU/Linux
- Modified by Ignat Loskutov
+ Modified by : Ignat Loskutov and Anton Belyy
  ============================================================================
  */
 
@@ -20,6 +20,8 @@
 
 #define SIZE 4
 
+int32_t score = 0;
+
 void getColor(uint16_t value, char *color, size_t length) {
     uint16_t c = 40;
     if (value > 0) while (value /= 2) c++;
@@ -30,6 +32,7 @@ void drawBoard(uint16_t board[SIZE][SIZE]) {
     int8_t x, y;
     char color[20], reset[] = "\033[0m";
     printf("\033[2J");
+    printf("Score: %d\n", score);
 
     printf("┌───────");
     for (x = 1; x < SIZE; x++)
@@ -109,6 +112,7 @@ bool collapseArray(uint16_t array[SIZE], int8_t x) {
     bool success = false;
     if (array[x] == array[x+1]) {
         array[x] *= 2;
+        score += array[x];
         array[x+1] = 0;
         success = true;
     }
