@@ -14,7 +14,7 @@ Console version of the game "2048" for GNU/Linux
 ### Installation
 
 ```
-git clone https://github.com/loskutov/2048.c.git
+git clone https://github.com/AVBelyy/2048.c.git
 make
 ./2048
 ```
